@@ -43,10 +43,11 @@ fn check_textures(
     rpg_sprite_handles: ResMut<RpgSpriteHandles>,
     asset_server: Res<AssetServer>,
 ) {
-    if let LoadState::Loaded = asset_server
-        .get_group_load_state(rpg_sprite_handles.handles.iter().map(|handle| handle.id()))
-    {
-        next_state.set(AppState::Finished);
+    if let LoadState::Loaded = asset_server.get_group_load_state(
+        rpg_sprite_handles.handles.iter().map(|handle| handle.id()),
+        false,
+    ) {
+        next_state.set(AppState::Finished).unwrap();
     }
 }
 
