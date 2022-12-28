@@ -13,7 +13,7 @@ use bevy_transform::components::{GlobalTransform, Transform};
 pub type PbrBundle = MaterialMeshBundle<StandardMaterial>;
 
 /// A component bundle for entities with a [`Mesh`] and a [`Material`].
-#[derive(Bundle, Clone)]
+#[derive(Bundle, Clone, Reflect)]
 pub struct MaterialMeshBundle<M: Material> {
     pub mesh: Handle<Mesh>,
     pub material: Handle<M>,
@@ -64,7 +64,7 @@ impl CubemapVisibleEntities {
 }
 
 /// A component bundle for [`PointLight`] entities.
-#[derive(Debug, Bundle, Default)]
+#[derive(Debug, Bundle, Default, Reflect)]
 pub struct PointLightBundle {
     pub point_light: PointLight,
     pub cubemap_visible_entities: CubemapVisibleEntities,
@@ -78,7 +78,7 @@ pub struct PointLightBundle {
 }
 
 /// A component bundle for spot light entities
-#[derive(Debug, Bundle, Default)]
+#[derive(Debug, Bundle, Default, Reflect)]
 pub struct SpotLightBundle {
     pub spot_light: SpotLight,
     pub visible_entities: VisibleEntities,
@@ -92,7 +92,7 @@ pub struct SpotLightBundle {
 }
 
 /// A component bundle for [`DirectionalLight`] entities.
-#[derive(Debug, Bundle, Default)]
+#[derive(Debug, Bundle, Default, Reflect)]
 pub struct DirectionalLightBundle {
     pub directional_light: DirectionalLight,
     pub frustum: Frustum,
