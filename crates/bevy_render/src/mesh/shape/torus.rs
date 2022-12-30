@@ -1,9 +1,10 @@
 use crate::mesh::{Indices, Mesh};
 use bevy_math::Vec3;
+use serde::{Serialize, Deserialize};
 use wgpu::PrimitiveTopology;
 
 /// A torus (donut) shape.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct Torus {
     pub radius: f32,
     pub ring_radius: f32,

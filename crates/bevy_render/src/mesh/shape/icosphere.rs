@@ -1,9 +1,10 @@
 use crate::mesh::{Indices, Mesh};
 use hexasphere::shapes::IcoSphere;
+use serde::{Serialize, Deserialize};
 use wgpu::PrimitiveTopology;
 
 /// A sphere made from a subdivided Icosahedron.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct Icosphere {
     /// The radius of the sphere.
     pub radius: f32,

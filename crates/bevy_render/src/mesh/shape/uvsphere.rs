@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 use wgpu::PrimitiveTopology;
 
 use crate::mesh::{Indices, Mesh};
@@ -5,7 +6,7 @@ use std::f32::consts::PI;
 
 /// A sphere made of sectors and stacks.
 #[allow(clippy::upper_case_acronyms)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct UVSphere {
     /// The radius of the sphere.
     pub radius: f32,

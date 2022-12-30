@@ -1,8 +1,9 @@
 use crate::mesh::{Indices, Mesh};
+use serde::{Serialize, Deserialize};
 use wgpu::PrimitiveTopology;
 
 /// A regular polygon in the `XY` plane
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct RegularPolygon {
     /// Inscribed radius in the `XY` plane.
     pub radius: f32,
@@ -61,7 +62,7 @@ impl From<RegularPolygon> for Mesh {
 }
 
 /// A circle in the `XY` plane
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Circle {
     /// Inscribed radius in the `XY` plane.
     pub radius: f32,

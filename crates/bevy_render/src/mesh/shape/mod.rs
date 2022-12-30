@@ -1,7 +1,7 @@
 use super::{Indices, Mesh};
 use bevy_math::*;
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Cube {
     pub size: f32,
 }
@@ -25,7 +25,7 @@ impl From<Cube> for Mesh {
 }
 
 /// An axis-aligned box defined by its minimum and maximum point.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Box {
     pub min_x: f32,
     pub max_x: f32,
@@ -115,7 +115,7 @@ impl From<Box> for Mesh {
 }
 
 /// A rectangle on the `XY` plane centered at the origin.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Quad {
     /// Full width and height of the rectangle.
     pub size: Vec2,
@@ -168,7 +168,7 @@ impl From<Quad> for Mesh {
 }
 
 /// A square on the `XZ` plane centered at the origin.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Plane {
     /// The total side length of the square.
     pub size: f32,
@@ -215,6 +215,7 @@ mod uvsphere;
 pub use capsule::{Capsule, CapsuleUvProfile};
 pub use icosphere::Icosphere;
 pub use regular_polygon::{Circle, RegularPolygon};
+use serde::{Serialize, Deserialize};
 pub use torus::Torus;
 pub use uvsphere::UVSphere;
 use wgpu::PrimitiveTopology;

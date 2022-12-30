@@ -1,9 +1,10 @@
 use crate::mesh::{Indices, Mesh};
 use bevy_math::{Vec2, Vec3};
+use serde::{Serialize, Deserialize};
 use wgpu::PrimitiveTopology;
 
 /// A cylinder with hemispheres at the top and bottom
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Capsule {
     /// Radius on the `XZ` plane.
     pub radius: f32,
@@ -31,7 +32,7 @@ impl Default for Capsule {
     }
 }
 
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy, Serialize, Deserialize)]
 /// Manner in which UV coordinates are distributed vertically.
 pub enum CapsuleUvProfile {
     /// UV space is distributed by how much of the capsule consists of the hemispheres.
