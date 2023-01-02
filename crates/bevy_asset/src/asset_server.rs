@@ -252,6 +252,19 @@ impl AssetServer {
         }
     }
 
+    /// Get the source info of an asset from the provided handle
+    pub fn get_source_info<H: Into<HandleId>>(&self, handle: H) -> Option<SourceInfo> {
+        match handle.into() {
+            HandleId::AssetPathId(id) => {
+                let asset_sources = self.server.asset_sources.read();
+                asset_sources
+                    .get(&id.source_path_id())
+                    .cloned()
+            }
+            HandleId::Id(_, _) => None,
+        }
+    }
+
     /// Gets the overall load state of a group of assets from the provided handles.
     ///
     /// This method will only return [`LoadState::Loaded`] if all assets in the
