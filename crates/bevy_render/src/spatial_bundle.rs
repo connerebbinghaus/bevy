@@ -1,4 +1,5 @@
 use bevy_ecs::prelude::Bundle;
+use bevy_reflect::Reflect;
 use bevy_transform::prelude::{GlobalTransform, Transform};
 
 use crate::view::{ComputedVisibility, Visibility};
@@ -13,7 +14,7 @@ use crate::view::{ComputedVisibility, Visibility};
 /// * To get the global transform of an entity, you should get its [`GlobalTransform`].
 /// * For hierarchies to work correctly, you must have all four components.
 ///   * You may use the [`SpatialBundle`] to guarantee this.
-#[derive(Bundle, Debug, Default)]
+#[derive(Bundle, Debug, Default, Reflect)]
 pub struct SpatialBundle {
     /// The visibility of the entity.
     pub visibility: Visibility,
